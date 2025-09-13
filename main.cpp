@@ -58,7 +58,7 @@ std::string convert(int64_t n) {
 
 int main() {
     int64_t n;
-    std::cout << "Enter a number not equal to 0: ";
+    std::cout << "Enter an integer number not equal to 0: ";
     std::cin >> n;
 
     std::string ans = convert(n);
