@@ -19,9 +19,16 @@ constexpr std::array<int64_t, N> generate_fibonacci_numbers() {
 
 std::string convert(int64_t n) {
     auto arr = generate_fibonacci_numbers<MAX_FIBONACCI_FOR_INT64-1>();
-    if (n < 1) {
-        throw std::runtime_error("n must be greater than 0");
+    if (n == 0) {
+        throw std::runtime_error("n must not be equal to 0");
     }
+    bool negative;
+    if (n < 0)
+    {
+        negative = n < 0;
+        n *= -1;
+    }
+
 
     std::string ans;
     for (auto i = 0; arr[i] <= n; ++i)
@@ -40,16 +47,22 @@ std::string convert(int64_t n) {
     }
 
     std::reverse(ans.begin(), ans.end());
+
+    if (negative)
+    {
+        ans = "-"+ans;
+    }
     return ans;
 }
 
 
 int main() {
     int64_t n;
+    std::cout << "Enter a number not equal to 0: ";
     std::cin >> n;
 
     std::string ans = convert(n);
     std::cout << ans << std::endl;
 
     return 0;
-}`
+}
